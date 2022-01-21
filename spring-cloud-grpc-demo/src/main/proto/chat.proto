@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package chat;
+
+option java_multiple_files = true;
+option java_package = "de.springclouddemo.chat";
+option java_outer_classname = "ChatProto";
+
+
+// The chat service definition.
+service Chat {
+  // Client sends a ConnectionInitRequest to establish the connection
+  // The server will respond with a Stream of Chat Responses
+  rpc initialize(ConnectionInitRequest) returns (stream ChatResponse) {}
+}
+
+message ConnectionInitRequest {
+  string msg = 1;
+}
+
+message ChatResponse {
+  string message = 1;
+}

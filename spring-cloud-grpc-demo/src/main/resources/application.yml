@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers:
+            - localhost:29092
+      function:
+        definition: receive;handle;send;persistentEntities;resourceMappings # methods to call
+      bindings:
+        receive-in-0: # input 0 for receive method - subscriber
+          destination: spring-cloud-demo
+        handle-in-0: # input 0 for handle method - subscriber
+          destination: spring-cloud-demo
+        send-out-0: # output 0 for send method - publisher
+          destination: spring-cloud-demo
