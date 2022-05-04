@@ -61,6 +61,19 @@
             <artifactId>spring-kafka-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Provides the documentation API -->
+        <dependency>
+            <groupId>io.github.springwolf</groupId>
+            <artifactId>springwolf-kafka</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <!-- Provides the UI - optional (recommended) -->
+        <dependency>
+            <groupId>io.github.springwolf</groupId>
+            <artifactId>springwolf-ui</artifactId>
+            <version>0.4.0</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
