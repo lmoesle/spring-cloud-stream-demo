@@ -3,6 +3,7 @@ package de.lmoesle.kafkademo.docs;
 import com.asyncapi.v2.binding.kafka.KafkaOperationBinding;
 import com.asyncapi.v2.model.channel.ChannelItem;
 import com.asyncapi.v2.model.channel.operation.Operation;
+import de.lmoesle.kafkademo.docs.configuration.ConsumerProperties;
 import de.lmoesle.kafkademo.dto.MessageDto;
 import io.github.stavshamir.springwolf.asyncapi.scanners.channels.ChannelsScanner;
 import io.github.stavshamir.springwolf.asyncapi.types.channel.operation.message.Message;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class SpringCloudStreamConsumerScanner implements ChannelsScanner {
 
     private final SchemasService schemasService;
+    private final ConsumerProperties consumerProperties;
 
     @Override
     public Map<String, ChannelItem> scan() {
@@ -32,7 +34,7 @@ public class SpringCloudStreamConsumerScanner implements ChannelsScanner {
                 .build();
 
         var binding = new KafkaOperationBinding();
-        binding.setGroupId("kafka-demo");
+        binding.setGroupId(this.consumerProperties.getGroup());
 
         Operation operation = Operation.builder()
                 .message(msg)
@@ -44,7 +46,7 @@ public class SpringCloudStreamConsumerScanner implements ChannelsScanner {
                 .description("Consumer that receives messages")
                 .build();
 
-        return Map.of("kafka-demo-stream1", channelItem);
+        return Map.of(this.consumerProperties.getDestination(), channelItem);
     }
 
 }
