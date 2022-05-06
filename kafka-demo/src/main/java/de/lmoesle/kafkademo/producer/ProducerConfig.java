@@ -1,5 +1,6 @@
 package de.lmoesle.kafkademo.producer;
 
+import de.lmoesle.kafkademo.docs.DocumentAsyncAPI;
 import de.lmoesle.kafkademo.dto.MessageDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import reactor.core.publisher.Sinks;
 
 import java.util.function.Supplier;
 
+@DocumentAsyncAPI(payload = MessageDto.class)
 @Slf4j
 @Configuration
 public class ProducerConfig {
