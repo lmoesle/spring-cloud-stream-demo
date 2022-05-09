@@ -32,17 +32,11 @@ public class AsyncApiConfiguration {
                 .url(this.broker)
                 .build();
 
-//        ProducerData sendMessageProducer = ProducerData.builder()
-//                .channelName("kafka-demo-stream1")
-//                .binding(Map.of(this.defaultBinder, new KafkaOperationBinding()))
-//                .payloadType(MessageDto.class)
-//                .build();
-
+        // registering producers is not required. Producers and consumers are automatically detected.
         return AsyncApiDocket.builder()
                 .basePackage("de.lmoesle.kafkademo")
                 .info(info)
                 .server("kafka", kafkaServer)
-//                .producer(sendMessageProducer)
                 .build();
     }
 
