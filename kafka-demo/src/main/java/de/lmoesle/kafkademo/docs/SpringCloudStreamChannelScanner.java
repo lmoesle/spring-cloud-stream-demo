@@ -57,7 +57,7 @@ public class SpringCloudStreamChannelScanner implements ChannelsScanner {
                     .findAny();
 
             if (annotatedCloudFunction.isEmpty()) {
-                log.warn("No documentation found for {}. Did you annotate your cloud function with @DocumentAsyncAPI", definition);
+                log.warn("No documentation found for {}. Did you annotate your cloud function with @DocumentAsyncAPI", definition.get());
                 return;
             }
 
